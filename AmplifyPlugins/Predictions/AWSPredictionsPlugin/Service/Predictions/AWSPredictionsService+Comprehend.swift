@@ -137,8 +137,8 @@ extension AWSPredictionsService: AWSComprehendServiceBehavior {
                 }
                 let beginOffSet = syntax.beginOffset?.intValue ?? 0
                 let endOffset = syntax.endOffset?.intValue ?? 0
-                let startIndex = text.index(text.startIndex, offsetBy: beginOffSet)
-                let endIndex = text.index(text.startIndex, offsetBy: endOffset)
+                let startIndex = text.unicodeScalars.index(text.startIndex, offsetBy: beginOffSet)
+                let endIndex = text.unicodeScalars.index(text.startIndex, offsetBy: endOffset)
                 let range = startIndex ..< endIndex
 
                 let score = comprehendPartOfSpeech.score?.floatValue
@@ -174,8 +174,8 @@ extension AWSPredictionsService: AWSComprehendServiceBehavior {
 
                 let beginOffSet = keyPhrase.beginOffset?.intValue ?? 0
                 let endOffset = keyPhrase.endOffset?.intValue ?? 0
-                let startIndex = text.index(text.startIndex, offsetBy: beginOffSet)
-                let endIndex = text.index(text.startIndex, offsetBy: endOffset)
+                let startIndex = text.unicodeScalars.index(text.startIndex, offsetBy: beginOffSet)
+                let endIndex = text.unicodeScalars.index(text.startIndex, offsetBy: endOffset)
                 let range = startIndex ..< endIndex
                 let amplifyKeyPhrase = KeyPhrase(text: keyPhrase.text ?? "",
                                                  range: range,
